@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git clone https://github.com/eur0ch1ld/aws-setup .
+
+echo 'source ~/.bashrc-additional' >> .bashrc
+
