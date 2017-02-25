@@ -1,0 +1,16 @@
+On Ubuntu:
+
+1. VIM
+Copy in .vimrc
+Also need to install ctags
+  sudo apt-get install ctags
+Follow instructions at top of .vimrc - install Vundle and a Python 2 vim version
+
+2. Docker Setup
+Follow instructions here: https://docs.docker.com/engine/installation/linux/ubuntu/
+Sudo-fy the docker command with the following. (Use ec2-user for the Amazon Linux)
+  sudo usermod -a -G docker ubuntu
+
+3. Docker Usage
+Cleanup old images with http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html
+
