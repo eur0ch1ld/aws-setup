@@ -1,7 +1,17 @@
 #!/bin/bash
 
+#run with:
+# source .aws-setup-ubuntu
+
+#define the setup repository as a remote
+git remote add setup https://github.com/eur0ch1ld/aws-setup
+
 #get the config files
 git clone https://github.com/eur0ch1ld/aws-setup .
+
+#will save passwords used with git in a plain file to save entering every time. 
+#Could upgrade to a protected helper probably
+git config credential.helper store
 
 #set up shortcuts for this session and this script
 source ~/.bashrc-additional

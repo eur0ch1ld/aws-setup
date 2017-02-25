@@ -1,6 +1,4 @@
 alias docker-cleanup='docker rm $(docker ps -a -q) && docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 
-git remote add setup https://github.com/eur0ch1ld/aws-setup
-
-#reconnect to screen if we had something running
-screen -r
+#reconnect to screen if we had something running, -q for suppress errors
+screen -q -r
