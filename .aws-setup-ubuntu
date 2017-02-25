@@ -1,6 +1,11 @@
 #!/bin/bash
 
+#get the config files
 git clone https://github.com/eur0ch1ld/aws-setup .
 
+#set up shortcuts for this session and this script
+source ~/.bashrc-additional
+
+#get bashrc to run additional stuff from the .bashrc-additional file - aliases etc
 echo 'source ~/.bashrc-additional' >> .bashrc
 
