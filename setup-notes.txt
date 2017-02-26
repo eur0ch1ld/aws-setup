@@ -14,3 +14,37 @@ Sudo-fy the docker command with the following. (Use ec2-user for the Amazon Linu
 3. Docker Usage
 Cleanup old images with http://jimhoskins.com/2013/07/27/remove-untagged-docker-images.html
 
+4. Django install
+Install pip
+  sudo apt install -y python-pip
+  pip install --upgrade pip
+  pip install django
+
+5. Django project setup
+Create project
+  django-admin startproject <projectname>
+  cd <projectname>
+Edit the inbound rules for the security group for the server (in AWS manager web)
+Edit settings.py to put the AWS server IP in ALLOWED_HOSTS
+... then the test server can be run as follows.
+  python manage.py runserver 0.0.0.0:8000
+Create the app
+  python manage.py startapp <appname>
+Initially I worked through this tutorial: https://docs.djangoproject.com/en/1.10/intro/tutorial01/
+Cross site forgery protection means that an token is passed from the input form and
+returned in the POST. As this doesn't apply here we need to (a) turn it off or (b) do soemthing
+a bit cleverer. Trying (a) for now. Refer here: https://docs.djangoproject.com/en/1.10/ref/csrf/
+I commented out the 'django.middleware.csrf.CsrfViewMiddleware' value in MIDDLEWARE in settings.py
+OR use specific function decorators as per https://medium.com/@raiderrobert/how-to-make-a-webhook-receiver-in-django-1ce260f4efff
+
+6. api.ai webhook setup
+In api.ai, enable Webhook under "Fulfillment" on left menu (domains can remain disabled), 
+then under same at bottom of intent page.
+Make sure the AWS security group is set up to allow the api.ai ip (?) to access.
+To test using curl (in Windows anyway) the command is of the form
+  curl -X POST -T sampleQuery.txt http://w.x.y.z:8000/your/requesturl/
+where sampleQuery.txt is a file with the json data.Then the json can be found in request.body
+in the Django view.
+
+
+

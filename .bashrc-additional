@@ -1,3 +1,4 @@
+#exits stopped containers and removes old images
 alias docker-cleanup='docker rm $(docker ps -a -q) && docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 
 #reconnect to screen if we had something running, -q for suppress errors

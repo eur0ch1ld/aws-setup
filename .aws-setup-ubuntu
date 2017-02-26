@@ -3,6 +3,9 @@
 #run with:
 # source .aws-setup-ubuntu
 
+#Update repositories before install
+sudo apt-get update
+
 #define the setup repository as a remote
 git remote add setup https://github.com/eur0ch1ld/aws-setup
 
